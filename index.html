@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<!-- Capa -->
+				<section>
+					<h1>Angular</h1>
+					<h3>{{ subtitle }}</h3>
+					<p>
+						<small>Criado por <a href="https://github.com/mauricio-fidalgo">Mauricio Fidalgo Garcia</a> / <a href="http://twitter.com/mauriciogamedev">@mauriciogamedev</a></small>
+					</p>
+				</section>
+				<!-- Introdução -->
+				<section>
+					<h2>Benefícios</h2>
+					<ul>
+						<li>Fácil de entender o front end</li>
+						<li>Testável</li>
+						<li>Modular</li>
+					</ul>
+				</section>
+				<!-- Directives -->
+				<section>
+					<section>
+						<h3>Directives = Angular <b>-</b>javascript</h3>
+						<p><small>Novas funcionalidades ao HTML.</small><br><small>Estrutura MV*</small></p>
+					</section>
+					<!--  -->
+					<section>
+						<img style="width:50vw; height: 50vw;" src="images/old_dog.jpg">
+					</section>
+					<!--  -->
+					<section>
+						<h4>Hello World Kubrusly</h4>
+						<pre><code>&lt;html ng-app&gt;
+&lt;head&gt;
+    &lt;title&gt;Angular Directives&lt;/title&gt;
+    &lt;script src="angular.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;form&gt;
+            &lt;p&gt;&lt;input class="input" ng-model="name"&gt;&lt;/p&gt;
+            &lt;p&gt;Olá {{name}} Kubrusly&lt;/p&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+						<iframe src="exemplos/directives/directives01.html"></iframe>
+					</section>
+					<!--  -->
+					<section>
+						<h4>Filtros</h4>
+						<pre><code>&lt;p&gt;Grite aqui os seus problemas&lt;/p&gt;
+&lt;p&gt;&lt;input class="input" ng-model="problemas"&gt;&lt;/p&gt;
+&lt;p&gt;{{problemas | uppercase}}&lt;/p&gt;</code></pre>
+					<iframe src="exemplos/directives/directives02.html"></iframe>
+					</section>
+					<section>
+						<h4>Estruturas de repetição</h4>
+						<pre><code type="javascript">&lt;div ng-init="comidas=['Arroz', 'Frango', 'Carne', 'Macarrão']"&gt;
+    &lt;p&gt;Coisas que eu como no almoço:&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li ng-repeat="comida in comidas"&gt;{{comida}}&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+						<iframe src="exemplos/directives/directives03.html"></iframe>
+					</section>
+				</section>
+				<!-- Controller -->
+				<section>
+					<section>
+						<h1>Controllers</h1>
+						<small>Finalmente javascript</small>
+					</section>
+					<section>
+						<h2>Inicialização</h2>
+						<small>HTML</small>
+<pre><code><any ng-app="exampleApp">
+    <any ng-controller="ExampleController"></any>
+</any></code></pre>
+						<small>Javascript</small>
+<pre><code>var exampleApp = angular.module('exampleApp',[]);
+exampleApp.controller('ExampleController', function($scope){});
+</code></pre>
+					</section>
+					<section>
+						<h2>$scope</h2>
+						<small>Um valor definida no controller através do $scope</small>
+<pre><code>exampleApp.controller('ExampleController',function($scope){
+    $scope.valor = "Não pergunta nada difícil por favor.";
+});</code></pre>
+						<small>Pode ser acessada de forma simples na view.</small>
+<pre><code><div ng-controller="ExampleController">{{valor}}</div></code></pre>
+						<iframe src="exemplos/controllers/controllers01.html"></iframe>
+					</section>
+
+					<section>
+						<h2>$scope</h2>
+						<p>O inverso também funciona!</p>
+<pre><code>var exampleApp = angular.module('exampleApp',[]);
+exampleApp.controller('ExampleController', function($scope){
+    $scope.exibeValor = function(v){
+        alert(v);
+    };
+});</code></pre>
+<pre><code><div class="container" ng-controller="ExampleController">
+    <input type="text" ng-model="valor">
+    <button ng-click="exibeValor(valor)">alert valor</button>
+</div></code></pre>
+						<iframe src="exemplos/controllers/controllers02.html"></iframe>
+					</section>
+				</section>
+				<section>
+					<h2>Fim?</h2>
+					<small>Eu acabei pegando no sono.</small>
+				</section>
+				<section>
+					<h2>Referências e exemplos</h2>
+					<ul>
+						<li><a href="https://www.youtube.com/watch?v=i9MHigUZKEM">AngularJS Fundamentals In 60-ish Minutes</a></li>
+						<li><a href="https://www.youtube.com/watch?v=i9MHigUZKEM">AngularJS Fundamentals In 60-ish Minutes</a></li>
+					</ul>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

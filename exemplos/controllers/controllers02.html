@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>Angular Directives</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+</head>
+<body>
+    <div class="container" ng-controller="ExampleController">
+        <input type="text" ng-model="valor">
+        <button ng-click="exibeValor(valor)">alert valor</button>
+    </div>
+    <script type="text/javascript">
+        var exampleApp = angular.module('exampleApp',[]);
+        exampleApp.controller('ExampleController', function($scope){
+            $scope.exibeValor = function(v){
+                alert(v);
+            };
+        });
+    </script>
+</body>
+</html>
